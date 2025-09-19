@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import soundwaves from "@/constants/soundwaves.json";
+import { addToSessionHistory } from "@/lib/actions/companion.actions";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -64,8 +65,18 @@ const CompanionComponent = ({
   }, [isSpeaking, LottieRef]);
 
   useEffect(() => {
-    const onCallStart = () => setcallStatus(CallStatus.ACTIVE);
-    const onCallEnd = () => setcallStatus(CallStatus.ENDED);
+    const onCallStart = async () => {
+      setcallStatus(CallStatus.ACTIVE);
+      try {
+        // record session in supabase
+        await addToSessionHistory(companionId);
+      } catch (err) {
+        console.error("Failed to record session:", err);
+      }
+    };
+    const onCallEnd = () => {
+      setcallStatus(CallStatus.ENDED);
+    };
     const onMessage = (message: Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
         const newMessage = { role: message.role, content: message.transcript };
