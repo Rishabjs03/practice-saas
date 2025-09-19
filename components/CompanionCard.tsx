@@ -1,3 +1,4 @@
+"use client";
 import { addBookmark, removeBookmark } from "@/lib/actions/companion.actions";
 import Image from "next/image";
 import Link from "next/link";
