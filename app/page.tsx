@@ -26,6 +26,7 @@ const Page = async () => {
             topic={topic}
             subject={subject}
             duration={duration}
+            bookmarked={false}
             color={getSubjectColor(subject)}
           />
         ))}
