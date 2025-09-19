@@ -1,6 +1,4 @@
-"use client";
-import { removeBookmark } from "@/lib/actions/companion.actions";
-import { addBookmark } from "@/lib/actions/companion.actions";
+import { addBookmark, removeBookmark } from "@/lib/actions/companion.actions";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,11 +8,10 @@ interface CompanionCardProps {
   name: string;
   topic: string;
   subject: string;
-  duration: number;
   color: string;
+  duration: number;
   bookmarked: boolean;
 }
-
 const CompanionCard = ({
   id,
   name,
@@ -47,7 +44,6 @@ const CompanionCard = ({
           />
         </button>
       </div>
-
       <h2 className="text-2xl font-bold">{name}</h2>
       <p className="text-sm">{topic}</p>
       <div className="flex items-center gap-2">
@@ -57,12 +53,11 @@ const CompanionCard = ({
           width={13.5}
           height={13.5}
         />
-        <p className="text-sm">{duration} minutes</p>
+        <p className="text-sm">{duration} mins</p>
       </div>
-
       <Link href={`/companions/${id}`} className="w-full">
-        <button className="btn-primary w-full justify-center">
-          Launch Lesson
+        <button className="btn-primary w-full  justify-center ">
+          Launch lesson
         </button>
       </Link>
     </article>
