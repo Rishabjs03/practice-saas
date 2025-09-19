@@ -51,7 +51,7 @@ const CompanionComponent = ({
       clientMessages: ["transcript"],
       serverMessages: [],
     };
-    // @ts-expect-error
+    // @ts-expect-error TS2339: vapi.start types are incompatible, but it's safe here
     vapi.start(configureAssistant(voice, style), assistantOverrides);
   };
   useEffect(() => {
