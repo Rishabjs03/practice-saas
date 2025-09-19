@@ -1,7 +1,8 @@
+export const dynamic = "force-dynamic";
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
 import CTA from "@/components/CTA";
-import { recentSessions } from "@/constants";
+
 import {
   fetchCompanion,
   getRecentSession,
