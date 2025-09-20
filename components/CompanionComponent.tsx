@@ -157,32 +157,32 @@ const CompanionComponent = ({
               className="rounded-lg"
             />
             <p className="font-bold text-2xl"> {userName}</p>
-            <button className="btn-mic" onClick={toggleMicrophone}>
-              <Image
-                src={isMuted ? "/icons/mic-off.svg" : "/icons/mic-on.svg"}
-                alt="mic"
-                width={36}
-                height={36}
-              />
-              <p className="max-sm:hidden">{isMuted ? "UnMute" : "Mute"}</p>
-            </button>
-            <button
-              className={cn(
-                "rounded-lg py-2 cursor-pointer transition-colors w-[300px] text-white",
-                callStatus === CallStatus.ACTIVE ? "bg-red-700" : "bg-primary",
-                callStatus === CallStatus.CONNECTING && "animate-pulse"
-              )}
-              onClick={
-                callStatus === CallStatus.ACTIVE ? handleDisconnect : handlecall
-              }
-            >
-              {callStatus === CallStatus.ACTIVE
-                ? "End Session"
-                : callStatus === CallStatus.CONNECTING
-                ? "Connecting"
-                : "Start Session"}
-            </button>
           </div>
+          <button className="btn-mic" onClick={toggleMicrophone}>
+            <Image
+              src={isMuted ? "/icons/mic-off.svg" : "/icons/mic-on.svg"}
+              alt="mic"
+              width={36}
+              height={36}
+            />
+            <p className="max-sm:hidden">{isMuted ? "UnMute" : "Mute"}</p>
+          </button>
+          <button
+            className={cn(
+              "rounded-lg py-2 cursor-pointer transition-colors w-full text-white",
+              callStatus === CallStatus.ACTIVE ? "bg-red-700" : "bg-primary",
+              callStatus === CallStatus.CONNECTING && "animate-pulse"
+            )}
+            onClick={
+              callStatus === CallStatus.ACTIVE ? handleDisconnect : handlecall
+            }
+          >
+            {callStatus === CallStatus.ACTIVE
+              ? "End Session"
+              : callStatus === CallStatus.CONNECTING
+              ? "Connecting"
+              : "Start Session"}
+          </button>
         </div>
       </section>
       <section className="transcript">
